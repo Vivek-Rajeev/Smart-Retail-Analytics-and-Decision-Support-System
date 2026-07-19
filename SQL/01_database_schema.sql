@@ -1,34 +1,63 @@
--- Database: Smart Banking Analytics
+Database: Smart Retail Analytics
 
+=========================================
 Table: Customers
-------------------------------------
-CustomerID
-CustomerName
-Gender
-Age
+=========================================
+
+CustomerID (Primary Key)
+Name
 City
-Occupation
+State
+Segment
 
-Table: Accounts
-------------------------------------
-AccountID
-CustomerID
-AccountType
-Balance
-OpenDate
 
-Table: Loans
-------------------------------------
-LoanID
-CustomerID
-LoanType
-LoanAmount
-LoanStatus
+=========================================
+Table: Products
+=========================================
 
-Table: Transactions
-------------------------------------
-TransactionID
-CustomerID
-Amount
-TransactionDate
-TransactionType
+ProductID (Primary Key)
+ProductName
+Category
+CostPrice
+
+
+=========================================
+Table: Orders
+=========================================
+
+OrderID (Primary Key)
+Date
+CustomerID (Foreign Key)
+ProductID (Foreign Key)
+Quantity
+Sales
+Profit
+
+
+=========================================
+Table: Inventory
+=========================================
+
+ProductID (Primary Key, Foreign Key)
+CurrentStock
+
+
+=========================================
+Table: SalesTargets
+=========================================
+
+Month
+TargetSales
+
+
+=========================================
+Relationships
+=========================================
+
+Customers (1) ------ (*) Orders
+
+Products (1) ------- (*) Orders
+
+Products (1) ------- (1) Inventory
+
+SalesTargets is a standalone table.
